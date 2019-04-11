@@ -28,7 +28,7 @@ public class createWindow {
 	private JTextField textField_6;
 	private JTextField textField_7;
 	private JLabel lblNewLabel_2;
-	public static int[] calcValues = new int[7];
+	public static double[] calcValues = new double[7];
 	public static int value1;
 	public static boolean error;
 	/**
@@ -70,37 +70,44 @@ public class createWindow {
 		
 		textField = new JTextField();
 		textField.setToolTipText("");
+		textField.setText("1280");
 		textField.setBounds(268, 77, 131, 20);
 		frame.getContentPane().add(textField);
 		textField.setColumns(10);
 		
 		textField_1 = new JTextField();
 		textField_1.setColumns(10);
+		textField_1.setText("1024");
 		textField_1.setBounds(268, 108, 131, 20);
 		frame.getContentPane().add(textField_1);
 		
 		textField_2 = new JTextField();
+		textField_2.setText("24");
 		textField_2.setColumns(10);
 		textField_2.setBounds(268, 139, 131, 20);
 		frame.getContentPane().add(textField_2);
 		
 		textField_3 = new JTextField();
 		textField_3.setColumns(10);
+		textField_3.setText("25");
 		textField_3.setBounds(268, 170, 131, 20);
 		frame.getContentPane().add(textField_3);
 		
 		textField_4 = new JTextField();
 		textField_4.setColumns(10);
+		textField_4.setText("52");
 		textField_4.setBounds(268, 201, 131, 20);
 		frame.getContentPane().add(textField_4);
 		
 		textField_5 = new JTextField();
 		textField_5.setColumns(10);
+		textField_5.setText("16");
 		textField_5.setBounds(268, 232, 131, 20);
 		frame.getContentPane().add(textField_5);
 		
 		textField_6 = new JTextField();
 		textField_6.setColumns(10);
+		textField_6.setText("44100");
 		textField_6.setBounds(268, 263, 131, 20);
 		frame.getContentPane().add(textField_6);
 		
@@ -134,10 +141,12 @@ public class createWindow {
 		
 		JButton btnNewButton = new JButton("\u0420\u0430\u0441\u0441\u0447\u0438\u0442\u0430\u0442\u044C");
 		btnNewButton.addActionListener(new ActionListener() {
+			
 			public void actionPerformed(ActionEvent arg0) {
 				if(isTextFieldEmpty())
 					JOptionPane.showMessageDialog(null, "Все поля обязательны для заполнения!", "Ошибка", JOptionPane.WARNING_MESSAGE);
 					
+				
 				setArrayValues();
 				error = false;
 				for(int i = 0; i < 7; i++) {
@@ -149,11 +158,12 @@ public class createWindow {
 				}
 
 				if (error == true) {
-					JOptionPane.showMessageDialog(null, "Введите целые, положительные значения", "Ошибка", JOptionPane.WARNING_MESSAGE);
+					JOptionPane.showMessageDialog(null, "Введите положительные значения", "Ошибка", JOptionPane.WARNING_MESSAGE);
 					System.out.print("ERROR");
 				} else {
 					Calculate calculate = new Calculate();
-					calculate.toCalculate();	
+					textField_7.setText((calculate.toFormateResult()));	
+					
 				}
 				
 			}
@@ -181,11 +191,9 @@ public class createWindow {
 		calcValues[6] = Integer.parseInt(textField_6.getText());
 	}
 	
-	public void showError() {
-		lblNewLabel_2.setVisible(true);
-	}
+
 	
-	public int[] getArrayOfValues() {
+	public double[] getArrayOfValues() {
         return calcValues;
     }
 	
@@ -205,7 +213,7 @@ public class createWindow {
 
 	}
 	
-	public boolean toValidate(int textFieldValue) {
+	public boolean toValidate(double textFieldValue) {
 		boolean er;
 		
 		if (textFieldValue <= 0 ) 
