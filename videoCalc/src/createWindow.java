@@ -210,7 +210,6 @@ public class createWindow {
 			return true;
 		} else
 			return false;
-
 	}
 	
 	public boolean toValidate(double textFieldValue) {
