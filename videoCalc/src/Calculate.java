@@ -1,58 +1,58 @@
-//Объявляем класс Calculate
+//РћР±СЉСЏРІР»СЏРµРј РєР»Р°СЃСЃ Calculate
 public class Calculate {
-	//Объявляем переменную result типа double
+	//РћР±СЉСЏРІР»СЏРµРј РїРµСЂРµРјРµРЅРЅСѓСЋ result С‚РёРїР° double
 	public static double result;
-	//Объявляем метод toCalculate() типа double
+	//РћР±СЉСЏРІР»СЏРµРј РјРµС‚РѕРґ toCalculate() С‚РёРїР° double
 	public static double toCalculate() {
-		//Создаем экземпляр window класса createWindow
+		//РЎРѕР·РґР°РµРј СЌРєР·РµРјРїР»СЏСЂ window РєР»Р°СЃСЃР° createWindow
 	    createWindow window = new createWindow();
-	    //Объявляем массив arrayOfValues типа double c 7 ячейками
+	    //РћР±СЉСЏРІР»СЏРµРј РјР°СЃСЃРёРІ arrayOfValues С‚РёРїР° double c 7 СЏС‡РµР№РєР°РјРё
 	    double[] arrayOfValues = new double[7];
-	    //Заполняем массив данными полученными из метода getArrayOfValues класса createWindow
+	    //Р—Р°РїРѕР»РЅСЏРµРј РјР°СЃСЃРёРІ РґР°РЅРЅС‹РјРё РїРѕР»СѓС‡РµРЅРЅС‹РјРё РёР· РјРµС‚РѕРґР° getArrayOfValues РєР»Р°СЃСЃР° createWindow
 	    arrayOfValues = window.getArrayOfValues();
-	    //Задаем начальное значение переменной result
+	    //Р—Р°РґР°РµРј РЅР°С‡Р°Р»СЊРЅРѕРµ Р·РЅР°С‡РµРЅРёРµ РїРµСЂРµРјРµРЅРЅРѕР№ result
 	    result = 1;
 	    
-		//Объявляем переменные videoVol audioVol типа double
+		//РћР±СЉСЏРІР»СЏРµРј РїРµСЂРµРјРµРЅРЅС‹Рµ videoVol audioVol С‚РёРїР° double
 	    double videoVol;
 	    double audioVol;
 	    
-	    //Рассчитываем аудио и видео объем данных и переводим полученное значение в мегабайты
+	    //Р Р°СЃСЃС‡РёС‚С‹РІР°РµРј Р°СѓРґРёРѕ Рё РІРёРґРµРѕ РѕР±СЉРµРј РґР°РЅРЅС‹С… Рё РїРµСЂРµРІРѕРґРёРј РїРѕР»СѓС‡РµРЅРЅРѕРµ Р·РЅР°С‡РµРЅРёРµ РІ РјРµРіР°Р±Р°Р№С‚С‹
 	    audioVol = arrayOfValues[4] * arrayOfValues[5] * arrayOfValues[6] / (8.0 * 1024.0 * 1024.0);
 		videoVol = arrayOfValues[0] * arrayOfValues[1] * arrayOfValues[2] / (8.0 * 1024.0 * 1024.0);
-		//Умножаем аудио и видео объем на кол-во кадров/сек
+		//РЈРјРЅРѕР¶Р°РµРј Р°СѓРґРёРѕ Рё РІРёРґРµРѕ РѕР±СЉРµРј РЅР° РєРѕР»-РІРѕ РєР°РґСЂРѕРІ/СЃРµРє
 		result = audioVol * videoVol * arrayOfValues[3];
-		//Возвращаем результат вычислений
+		//Р’РѕР·РІСЂР°С‰Р°РµРј СЂРµР·СѓР»СЊС‚Р°С‚ РІС‹С‡РёСЃР»РµРЅРёР№
 		return result;
 	}
-	//Объявляем метод toFormateResult типа String
+	//РћР±СЉСЏРІР»СЏРµРј РјРµС‚РѕРґ toFormateResult С‚РёРїР° String
 	public static String toFormateResult() {
-		//Объявляем переменную value типа double и заносим в нее данные полученные из метода toCalculate
+		//РћР±СЉСЏРІР»СЏРµРј РїРµСЂРµРјРµРЅРЅСѓСЋ value С‚РёРїР° double Рё Р·Р°РЅРѕСЃРёРј РІ РЅРµРµ РґР°РЅРЅС‹Рµ РїРѕР»СѓС‡РµРЅРЅС‹Рµ РёР· РјРµС‚РѕРґР° toCalculate
 		double value = toCalculate();
-		//Объявляем переменную formatedValue типа double
+		//РћР±СЉСЏРІР»СЏРµРј РїРµСЂРµРјРµРЅРЅСѓСЋ formatedValue С‚РёРїР° double
 		String formatedValue;
-		//Выполняем проверку данных для форматирования
+		//Р’С‹РїРѕР»РЅСЏРµРј РїСЂРѕРІРµСЂРєСѓ РґР°РЅРЅС‹С… РґР»СЏ С„РѕСЂРјР°С‚РёСЂРѕРІР°РЅРёСЏ
 		if (value > 500.0) {
 			formatedValue = Double.toString(value / 1024.0) ;
-			//Используем метод removeSymbols для удаления лишних знаков после запятой
-			formatedValue = removeSymbols(formatedValue) + " гб";
+			//РСЃРїРѕР»СЊР·СѓРµРј РјРµС‚РѕРґ removeSymbols РґР»СЏ СѓРґР°Р»РµРЅРёСЏ Р»РёС€РЅРёС… Р·РЅР°РєРѕРІ РїРѕСЃР»Рµ Р·Р°РїСЏС‚РѕР№
+			formatedValue = removeSymbols(formatedValue) + " РіР±";
 		}
 		else {
 			formatedValue = Double.toString(value);
-			//Используем метод removeSymbols для удаления лишних знаков после запятой
-			formatedValue = removeSymbols(formatedValue) + " мб";
+			//РСЃРїРѕР»СЊР·СѓРµРј РјРµС‚РѕРґ removeSymbols РґР»СЏ СѓРґР°Р»РµРЅРёСЏ Р»РёС€РЅРёС… Р·РЅР°РєРѕРІ РїРѕСЃР»Рµ Р·Р°РїСЏС‚РѕР№
+			formatedValue = removeSymbols(formatedValue) + " РјР±";
 		}
-		//Возвращаем отформатированный результат
+		//Р’РѕР·РІСЂР°С‰Р°РµРј РѕС‚С„РѕСЂРјР°С‚РёСЂРѕРІР°РЅРЅС‹Р№ СЂРµР·СѓР»СЊС‚Р°С‚
 		return formatedValue;
 		
 	}
-	//Объявляем метод removeSymbols типа String, принимающий на вход переменную типа String
+	//РћР±СЉСЏРІР»СЏРµРј РјРµС‚РѕРґ removeSymbols С‚РёРїР° String, РїСЂРёРЅРёРјР°СЋС‰РёР№ РЅР° РІС…РѕРґ РїРµСЂРµРјРµРЅРЅСѓСЋ С‚РёРїР° String
 	public static String removeSymbols(String s) {
-		//Объявляем переменную end типа int и записываем в нее позицию точки в числе
+		//РћР±СЉСЏРІР»СЏРµРј РїРµСЂРµРјРµРЅРЅСѓСЋ end С‚РёРїР° int Рё Р·Р°РїРёСЃС‹РІР°РµРј РІ РЅРµРµ РїРѕР·РёС†РёСЋ С‚РѕС‡РєРё РІ С‡РёСЃР»Рµ
 		int end = s.indexOf(".");
-		//Выбираем из исходной строки подстроку начиная с 0 позиции и заканчивая end+2
+		//Р’С‹Р±РёСЂР°РµРј РёР· РёСЃС…РѕРґРЅРѕР№ СЃС‚СЂРѕРєРё РїРѕРґСЃС‚СЂРѕРєСѓ РЅР°С‡РёРЅР°СЏ СЃ 0 РїРѕР·РёС†РёРё Рё Р·Р°РєР°РЅС‡РёРІР°СЏ end+2
 		s = s.substring(0, end+2);
-		//Возвращаем полученную строку
+		//Р’РѕР·РІСЂР°С‰Р°РµРј РїРѕР»СѓС‡РµРЅРЅСѓСЋ СЃС‚СЂРѕРєСѓ
 		return s;
 	}
 	

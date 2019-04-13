@@ -54,7 +54,7 @@ public class createWindow {
 	 * Create the application.
 	 */
 	public createWindow() {
-		//JOptionPane.showInputDialog(null, "Если вы администратор, введите пароль", "Авторизация", JOptionPane.INFORMATION_MESSAGE );
+		//JOptionPane.showInputDialog(null, "Р•СЃР»Рё РІС‹ Р°РґРјРёРЅРёСЃС‚СЂР°С‚РѕСЂ, РІРІРµРґРёС‚Рµ РїР°СЂРѕР»СЊ", "РђРІС‚РѕСЂРёР·Р°С†РёСЏ", JOptionPane.INFORMATION_MESSAGE );
 		initialize();
 	}
 	
@@ -144,7 +144,7 @@ public class createWindow {
 			
 			public void actionPerformed(ActionEvent arg0) {
 				if(isTextFieldEmpty())
-					JOptionPane.showMessageDialog(null, "Все поля обязательны для заполнения!", "Ошибка", JOptionPane.WARNING_MESSAGE);
+					JOptionPane.showMessageDialog(null, "Р’СЃРµ РїРѕР»СЏ РѕР±СЏР·Р°С‚РµР»СЊРЅС‹ РґР»СЏ Р·Р°РїРѕР»РЅРµРЅРёСЏ!", "РћС€РёР±РєР°", JOptionPane.WARNING_MESSAGE);
 					
 				
 				setArrayValues();
@@ -158,7 +158,7 @@ public class createWindow {
 				}
 
 				if (error == true) {
-					JOptionPane.showMessageDialog(null, "Введите положительные значения", "Ошибка", JOptionPane.WARNING_MESSAGE);
+					JOptionPane.showMessageDialog(null, "Р’РІРµРґРёС‚Рµ РїРѕР»РѕР¶РёС‚РµР»СЊРЅС‹Рµ Р·РЅР°С‡РµРЅРёСЏ", "РћС€РёР±РєР°", JOptionPane.WARNING_MESSAGE);
 					System.out.print("ERROR");
 				} else {
 					Calculate calculate = new Calculate();
