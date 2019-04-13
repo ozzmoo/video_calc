@@ -1,23 +1,17 @@
+//Подключение необходимых библиотек
 import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JTextField;
-import java.awt.BorderLayout;
-import java.awt.GridLayout;
-import java.awt.Window;
-
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import java.awt.Color;
-import javax.swing.JTextPane;
-import javax.swing.JFormattedTextField;
 
-
+//Объявление класса createWindow
 public class createWindow {
 
+	//Объявление переменных типа JFrame JTextField
 	private JFrame frame;
 	private JTextField textField;
 	private JTextField textField_1;
@@ -27,47 +21,41 @@ public class createWindow {
 	private JTextField textField_5;
 	private JTextField textField_6;
 	private JTextField textField_7;
-	private JLabel lblNewLabel_2;
+	//Объявление переменных класса
 	public static double[] calcValues = new double[7];
-	public static int value1;
 	public static boolean error;
-	/**
-	 * Launch the application.
-	 */
+
+	//Метод main
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
+			//Паблик метод run включающий отображение главного фрейма
 			public void run() {
-				try {
-					createWindow window = new createWindow();
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
+				//Создание экземпляра класса createWindow
+				createWindow window = new createWindow();
+				//Отключение невидимости фрейма
+				window.frame.setVisible(true);
 			}
 		});
-		
-	
 	}
 	
 
-	/**
-	 * Create the application.
-	 */
+	//Паблик метод createWindow запускающий метод initialize
 	public createWindow() {
-		//JOptionPane.showInputDialog(null, "Если вы администратор, введите пароль", "Авторизация", JOptionPane.INFORMATION_MESSAGE );
 		initialize();
 	}
-	
-	/**
-	 * Initialize the contents of the frame.
-	 */
+	//Приватный метод initialize реализующий создание главного окна программы
 	private void initialize() {
+		
+		//Создаем фрейм и устанавливаем значение заголовка
 		frame = new JFrame();
 		frame.setTitle("\u041F\u0418 217");
 		frame.setBounds(100, 100, 460, 507);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
+		//*********************************************************\\
+		//Создаем textField-ы и устанавливаем значения по умолчанию\\
+		//*********************************************************\\
 		textField = new JTextField();
 		textField.setToolTipText("");
 		textField.setText("1280");
@@ -110,7 +98,12 @@ public class createWindow {
 		textField_6.setText("44100");
 		textField_6.setBounds(268, 263, 131, 20);
 		frame.getContentPane().add(textField_6);
+		//*********************************************************\\
 		
+		
+		//**************\\
+		//Создаем лейблы\\
+		//**************\\
 		JLabel lblNewLabel = new JLabel("\u0428\u0438\u0440\u0438\u043D\u0430 \u0438\u0437\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u044F (px)");
 		lblNewLabel.setBounds(54, 80, 150, 14);
 		frame.getContentPane().add(lblNewLabel);
@@ -138,50 +131,59 @@ public class createWindow {
 		JLabel label_5 = new JLabel("\u0427\u0430\u0441\u0442\u043E\u0442\u0430 \u0434\u0438\u0441\u043A\u0440\u0435\u0442\u0438\u0437\u0430\u0446\u0438\u0438 (\u0413\u0446)");
 		label_5.setBounds(54, 266, 150, 14);
 		frame.getContentPane().add(label_5);
+		//*********************************************************\\
 		
+		//Создаем кнопку
 		JButton btnNewButton = new JButton("\u0420\u0430\u0441\u0441\u0447\u0438\u0442\u0430\u0442\u044C");
+		//Создаем слушатель для кнопки
 		btnNewButton.addActionListener(new ActionListener() {
-			
 			public void actionPerformed(ActionEvent arg0) {
+				//Проверка textField-ов на пустоту
 				if(isTextFieldEmpty())
+					//Если хотябы одно из полей пустое - выводим окно JOptionPane.showMessageDialog с сообщением об ошибке
 					JOptionPane.showMessageDialog(null, "Все поля обязательны для заполнения!", "Ошибка", JOptionPane.WARNING_MESSAGE);
-					
-				
+				//Заполняем массив значениями из textField-ов
 				setArrayValues();
+				//Устанавливаем значение по умолчанию для переменной error информирующей об ошибке в заполнении полей
 				error = false;
+				//Проходимся циклом по всем значениям массива calcValues
 				for(int i = 0; i < 7; i++) {
+					//Проверяем значения массива методом toValidate
 					if(toValidate(calcValues[i]) == true) {
 						error = true;
 						break;
 					} 
 						
 				}
-
+				//Если значение переменной error - истина, выводим окно с сообщением об ошибке
 				if (error == true) {
 					JOptionPane.showMessageDialog(null, "Введите положительные значения", "Ошибка", JOptionPane.WARNING_MESSAGE);
-					System.out.print("ERROR");
 				} else {
+				//Иначе выполняем вычисления в классе Calculate
+					//Создаем экземпляр класса calculate
 					Calculate calculate = new Calculate();
+					//Выводим значение полученное в классе Calculate в текстовое поле
 					textField_7.setText((calculate.toFormateResult()));	
-					
 				}
-				
 			}
 		});
 		btnNewButton.setBounds(268, 310, 131, 23);
 		frame.getContentPane().add(btnNewButton);
 		
+	    //Создание текстового поля
 		textField_7 = new JTextField();
 		textField_7.setBounds(268, 360, 131, 20);
 		frame.getContentPane().add(textField_7);
 		textField_7.setColumns(10);
 		
+		//Создание лейбла
 		JLabel lblNewLabel_1 = new JLabel("\u0420\u0435\u0437\u0443\u043B\u044C\u0442\u0430\u0442:");
 		lblNewLabel_1.setBounds(141, 363, 63, 14);
 		frame.getContentPane().add(lblNewLabel_1);
 	}
+	
+	//Метод setArrayValues реализующий добавление значений из textField-ов в массив
 	public void setArrayValues() {
-		value1 = Integer.parseInt(textField.getText());
 		calcValues[0] = Integer.parseInt(textField.getText());
 		calcValues[1] = Integer.parseInt(textField_1.getText());
 		calcValues[2] = Integer.parseInt(textField_2.getText());
@@ -192,12 +194,14 @@ public class createWindow {
 	}
 	
 
-	
+	//Метод getArrayOfValues реализующий передачу данных из массива calcValues в класс Calculate
 	public double[] getArrayOfValues() {
         return calcValues;
     }
 	
+	//Метод isTextFieldEmpty реализующий проверку textField-ов на пустоту
 	public boolean isTextFieldEmpty() {
+		//getText() - берет текст из текстового поля, trim() - удаляет пробелы, isEmpty() - проверяет пустое значение или нет
 		if(		textField.getText().trim().isEmpty()   ||
 				textField_1.getText().trim().isEmpty() ||
 				textField_2.getText().trim().isEmpty() ||
@@ -212,9 +216,9 @@ public class createWindow {
 			return false;
 	}
 	
+	//Метод toValidate реализующий проверку значений на положительность
 	public boolean toValidate(double textFieldValue) {
 		boolean er;
-		
 		if (textFieldValue <= 0 ) 
 			er= true;
 		 else
