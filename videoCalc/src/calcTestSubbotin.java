@@ -5,9 +5,8 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 public class calcTestSubbotin {
-	/*Объявление двух массивов содержащих тестовые значения*/
+	/*Объявление массива содержащего тестовые значения*/
 	double[] testValues1 = {800, 600, 24, 25, 3600, 16, 44100};
-	double[] testValues2 = {800, 600, 24, 50, 3600, 16, 44100};
 	
 	/*Аннтоация @Test указывает JUnit, что метод является тестовым методом*/
 	@Test
@@ -19,13 +18,4 @@ public class calcTestSubbotin {
 		assertTrue(Calculate.toCalculate(testValues1) == 10396.179277449846);
 	}
 	
-	@Test
-	public void testToCalculate2() {
-		/* Функция assertTrue возвращает результат (true или false) сравнения значений
-		 * Подставляет тестовые значения в метод toCalculate, который рассчитывает
-		 * количество памяти в неформатированном виде
-		 * После чего результат сравнивается с ожидаемым значением*/
-		assertTrue(Calculate.toCalculate(testValues2) == 20792.358554899693);
-		
-	}
 }
