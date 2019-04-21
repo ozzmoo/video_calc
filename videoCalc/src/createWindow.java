@@ -142,8 +142,15 @@ public class createWindow {
 				if(isTextFieldEmpty())
 					//Если хотябы одно из полей пустое - выводим окно JOptionPane.showMessageDialog с сообщением об ошибке
 					JOptionPane.showMessageDialog(null, "Все поля обязательны для заполнения!", "Ошибка", JOptionPane.WARNING_MESSAGE);
-				//Заполняем массив значениями из textField-ов
-				setArrayValues();
+				
+				//Проверка введены ли числовые значения
+				if(isNumericValues() == true)
+					//Заполняем массив значениями из textField-ов	
+					setArrayValues();
+				else
+					//Если введены не числовые значения, выводим окно с сообщением об ошибке
+					JOptionPane.showMessageDialog(null, "Введите числовые значения!", "Ошибка", JOptionPane.WARNING_MESSAGE);
+				
 				//Устанавливаем значение по умолчанию для переменной error информирующей об ошибке в заполнении полей
 				error = false;
 				//Проходимся циклом по всем значениям массива calcValues
@@ -193,6 +200,31 @@ public class createWindow {
 		calcValues[6] = Integer.parseInt(textField_6.getText());
 	}
 	
+	public static boolean isNumeric(String str)  
+	{  
+	  try  
+	  {  
+	    double d = Double.parseDouble(str);  
+	  }  
+	  catch(NumberFormatException nfe)  
+	  {  
+	    return false;  
+	  }  
+	  return true;  
+	}
+	
+	public boolean isNumericValues() {
+		if (	!isNumeric(textField.getText())   ||
+				!isNumeric(textField_1.getText()) ||
+				!isNumeric(textField_2.getText()) ||
+				!isNumeric(textField_3.getText()) ||
+				!isNumeric(textField_4.getText()) ||
+				!isNumeric(textField_5.getText()) ||
+				!isNumeric(textField_6.getText()) )
+			return false;
+		else
+			return true;
+	}
 
 	//Метод getArrayOfValues реализующий передачу данных из массива calcValues в класс Calculate
 	public double[] getArrayOfValues() {
