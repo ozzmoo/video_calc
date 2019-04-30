@@ -15,6 +15,6 @@ public class calcTestMester {
 		 * Подставляет тестовые значения в метод toCalculate, который рассчитывает
 		 * количество памяти в неформатированном виде
 		 * После чего результат сравнивается с ожидаемым значением*/
-		assertTrue(Calculate.toCalculate(testValues1) == 411.05611419677734);
+		assertTrue(Calculate.toCalculate(testValues1) == 410.05611419677734);
 	}
 }
